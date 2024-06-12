@@ -1,0 +1,21 @@
+가위바위보
+
+어쨌든 서버의 GameManager는 두 플레이어가 뭐냈는지 알아야함.
+
+각각의 플레이어가 낸거 저장하려면 플레이어를 등록할 필요가 있음?
+
+플레이어의 등록은 어디에서 이루어져야하는가?
+
+이전 버전에서는 NetworkRoomManager의 OnRoomServerAddPlayer에서 하려고 했다.
+
+근데 이거 테스트 해보니까 OnRoomServerAddPlayer는 안불린다?
+
+그러면 OnServerAddPlayer에서 하자. 이건 있으니까
+
+
+왜 안됐는지 알았다. OnlineScene에서는 NetworkRoomPlayer밖에 없는데, Player를 등록하려고 하니 못찾아서 null에러가 떴다.
+
+그러면, Player는 GameScene에 들어가야있으니까, 플레이어 등록은 OnlineScene이 아닌 GameScene에서 이루어져야한다.
+
+
+OnServerReady에서 등록을 시도해보자.
