@@ -61,11 +61,30 @@ OnServerSceneChanged
 순서로 진행됨. 여기에 클라에서 방에 입장하는 경우,
 서버에선
 
-OnServerReady(identity null)
+OnRoomServerConnect (conn.identity == null)
+OnServerConnect (conn.identity == null)
+OnServerReady (conn.identity == null)
 OnStartServer
-OnServerAddPlayer
+OnServerAddPlayer (netId 1)
 
 순서로 진행됨.
+
+여기서 클라가 게임을 시작하는 경우
+
+OnServerChangeScene (GameScene)
+OnRoomServerPlayersReady
+OnRoomServerSceneChanged (GameScene)
+OnServerSceneChanged (gameScene)
+OnServerReady (netId 2)
+
+?왜 netId 바꼈지?
+
+클라가 게임에서 나가버리는 경우
+
+OnServerDisconnect netId 2
+OnRoomServerPlayersNotReady
+OnRoomServerDisconnect netId 2
+OnStopServer
 
 
 ======================================================================

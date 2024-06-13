@@ -70,3 +70,5 @@ OnServerReady (conn.identity != null)
 
 게임을 시작하는 경우 OnServerReady가 불린다.
 여기서 등록해보자.
+
+OnServerReady는 GameScene뿐만 아니라 OnlineScene에서 도 불리니까 주의.
